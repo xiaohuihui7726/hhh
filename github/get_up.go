@@ -35,7 +35,7 @@ func makeGetupMsg(city string) (body string, isGetupEarly bool) {
 	cstZone := time.FixedZone("GMT", 8*3600) // 东八
 	now := time.Now().In(cstZone)
 	// 3点到18点起床都有效
-	isGetupEarly = 7 < now.Hour() && now.Hour() < 8
+	isGetupEarly = 1 < now.Hour() && now.Hour() < 24
 	body = fmt.Sprintf("今天的起床时间是--%s\n", now.Format(time.Kitchen))
 
 	if len(weatherMsg) > 0 {
