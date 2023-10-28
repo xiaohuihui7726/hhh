@@ -6,9 +6,11 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"log"
 )
 
 func main() {
+	log.Pringln("开始打印os")
 	log.Println(os)
 	host := os.Args[1]
 	if host == "gitcode" {
