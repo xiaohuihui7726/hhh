@@ -54,17 +54,24 @@ func GetUp(privateToken, owner, repo, city string) {
 	issueListByOps := &github.IssueListByRepoOptions{}
 	issues, _, _ := u.Issues.ListByRepo(ctx, owner, repo, issueListByOps)
 	issue := &github.Issue{}
-	if len(issues) == 0 {
-		issueRequest := &github.IssueRequest{Title: github.String("到公司记录")}
-		newIssue, rsp, err := u.Issues.Create(ctx, owner, repo, issueRequest)
-		if err != nil {
-			log.Fatalf("Create Issue Error.\nResponse: %v\n Error: %v\n", rsp, err)
-		} else {
-			issue = newIssue
-		}
+	issueRequest := &github.IssueRequest{Title: github.String("到公司记录")}
+	newIssue, rsp, err := u.Issues.Create(ctx, owner, repo, issueRequest)
+	if err != nil {
+		log.Fatalf("Create Issue Error.\nResponse: %v\n Error: %v\n", rsp, err)
 	} else {
-		issue = issues[0]
+		issue = newIssue
 	}
+	// if len(issues) == 0 {
+	// 	issueRequest := &github.IssueRequest{Title: github.String("到公司记录")}
+	// 	newIssue, rsp, err := u.Issues.Create(ctx, owner, repo, issueRequest)
+	// 	if err != nil {
+	// 		log.Fatalf("Create Issue Error.\nResponse: %v\n Error: %v\n", rsp, err)
+	// 	} else {
+	// 		issue = newIssue
+	// 	}
+	// } else {
+	// 	issue = issues[0]
+	// }
 
 	//isTodayHaveRecord := isTodayHaveGetup(u, owner, repo, issue)
 	//if isTodayHaveRecord {
