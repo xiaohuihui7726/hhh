@@ -6,12 +6,9 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"fmt"
 )
 
 func main() {
-	fmt.Println("开始打印os")
-	fmt.Println(os)
 	host := os.Args[1]
 	if host == "gitcode" {
 		privateToken := os.Args[2]
