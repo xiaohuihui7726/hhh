@@ -35,7 +35,7 @@ func makeGetupMsg(city string) (body string, isGetupEarly bool) {
 	cstZone := time.FixedZone("GMT", 8*3600) // 东八
 	now := time.Now().In(cstZone)
 	// 3点到18点起床都有效
-	isGetupEarly = 1 < now.Hour() && now.Hour() < 24
+	isGetupEarly = 9 < now.Hour() && now.Hour() < 10
 	body = fmt.Sprintf("今天的起床时间是--%s\n", now.Format(time.Kitchen))
 
 	if len(weatherMsg) > 0 {
@@ -55,7 +55,7 @@ func GetUp(privateToken, owner, repo, city string) {
 	issues, _, _ := u.Issues.ListByRepo(ctx, owner, repo, issueListByOps)
 	issue := &github.Issue{}
 	if len(issues) == 0 {
-		issueRequest := &github.IssueRequest{Title: github.String("起床时间记录")}
+		issueRequest := &github.IssueRequest{Title: github.String("到公司记录")}
 		newIssue, rsp, err := u.Issues.Create(ctx, owner, repo, issueRequest)
 		if err != nil {
 			log.Fatalf("Create Issue Error.\nResponse: %v\n Error: %v\n", rsp, err)
