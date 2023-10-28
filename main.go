@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	log.Pringln("开始打印os")
+	log.Println("开始打印os")
 	log.Println(os)
 	host := os.Args[1]
 	if host == "gitcode" {
