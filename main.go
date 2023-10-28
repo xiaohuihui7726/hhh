@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	log.Println(os)
 	host := os.Args[1]
 	if host == "gitcode" {
 		privateToken := os.Args[2]
