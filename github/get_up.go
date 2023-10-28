@@ -72,6 +72,8 @@ func GetUp(privateToken, owner, repo, city string) {
 	} else {
 		issue = issues[0]
 	}
+	log.Println("开始打印issue")
+	log.Println(issue)
 
 	//isTodayHaveRecord := isTodayHaveGetup(u, owner, repo, issue)
 	//if isTodayHaveRecord {
