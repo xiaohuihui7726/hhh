@@ -70,7 +70,14 @@ func GetUp(privateToken, owner, repo, city string) {
 			issue = newIssue
 		}
 	} else {
-		issue = issues[0]
+		issueRequest := &github.IssueRequest{Title: github.String("到公司记录")}
+		newIssue, rsp, err := u.Issues.Create(ctx, owner, repo, issueRequest)
+		if err != nil {
+			log.Fatalf("Create Issue Error.\nResponse: %v\n Error: %v\n", rsp, err)
+		} else {
+			issue = newIssue
+		}
+		// issue = issues[0]
 	}
 	log.Println("开始打印issue")
 	log.Println(issue)
