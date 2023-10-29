@@ -78,7 +78,7 @@ func GetUp(privateToken, owner, repo, city string) {
 		// } else {
 		// 	issue = newIssue
 		// }
-		issue = issues[1]
+		issue = issues[0]
 	}
 	log.Println("开始打印issue")
 	log.Println(issue)
